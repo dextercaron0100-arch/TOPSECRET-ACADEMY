@@ -126,6 +126,10 @@
 
   body {
     @apply bg-background text-foreground;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.04), transparent 35%),
+      linear-gradient(180deg, #050505 0%, #000000 45%, #050505 100%);
+    color: var(--foreground);
   }
 
   /**
@@ -135,6 +139,12 @@
 
   html {
     font-size: var(--font-size);
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
   }
 
   h1 {
@@ -171,11 +181,57 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: var(--motion-base);
+    transition-timing-function: var(--motion-ease);
   }
 
   input {
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+@keyframes hero-drift {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.07) translate3d(0, -10px, 0);
+  }
+
+  100% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes banner-drift {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.04) translate3d(0, -6px, 0);
+  }
+
+  100% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 20s var(--motion-ease-soft) infinite;
+}
+
+.banner-drift {
+  animation: banner-drift 16s var(--motion-ease-soft) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift,
+  .banner-drift {
+    animation: none !important;
   }
 }

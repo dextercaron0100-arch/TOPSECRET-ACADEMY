@@ -6,6 +6,13 @@
   --font-display: "League Spartan", "Segoe UI", system-ui,
     -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,
     sans-serif;
+  --motion-fast: 160ms;
+  --motion-base: 260ms;
+  --motion-slow: 420ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --surface-glow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --surface-glow-strong: 0 32px 110px rgba(0, 0, 0, 0.62);
 }
 
 html {
@@ -37,4 +44,54 @@ h6 {
   font-family: var(--font-display);
   letter-spacing: -0.06em;
   text-transform: uppercase;
+}
+
+.motion-reveal {
+  transition-property: opacity, transform, filter;
+  transition-duration: var(--motion-slow);
+  transition-timing-function: var(--motion-ease-soft);
+}
+
+.motion-reveal-fast {
+  transition-duration: var(--motion-base);
+}
+
+.motion-reveal-slow {
+  transition-duration: calc(var(--motion-slow) + 80ms);
+}
+
+.motion-surface {
+  transition-property: transform, box-shadow, border-color, background-color, opacity;
+  transition-duration: var(--motion-base);
+  transition-timing-function: var(--motion-ease);
+}
+
+.motion-link {
+  transition-property: color, opacity, transform;
+  transition-duration: var(--motion-fast);
+  transition-timing-function: var(--motion-ease);
+}
+
+.motion-safe-reduce *,
+.motion-safe-reduce *::before,
+.motion-safe-reduce *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }
