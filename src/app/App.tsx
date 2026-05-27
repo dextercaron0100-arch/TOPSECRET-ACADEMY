@@ -8,8 +8,12 @@ import {
   BookOpen,
 } from "lucide-react";
 import heroImage from "../imports/88b635bb-b31d-4045-b7c9-a340c111b1f9_-_Copy.jpg";
-import ryanHerreraImage from "../imports/791af5e3-5de8-45cf-9c14-ebfd12465d75.jpg";
+import ryanHerreraImage from "../imports/ryan-herrera-updated.png";
 import markHerreraImage from "../imports/ChatGPT_Image_May_26__2026__04_13_44_PM.png";
+import marvinHerreraBannerImage from "../imports/687039088_27210952171835268_4754694957016619653_n.jpg";
+import marvinHerreraImage from "../imports/marvin-herrera-updated.png";
+import arnelPoloImage from "../imports/asda.png";
+import logoImage from "../imports/topsecret-academy-logo.png";
 
 export default function App() {
   const mentors = [
@@ -26,17 +30,15 @@ export default function App() {
       lessons: 15,
     },
     {
-      name: "Robert Novales",
-      title: "Creative Direction",
-      image:
-        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
+      name: "Marvin Herrera",
+      title: "The Future of Crypto",
+      image: marvinHerreraImage,
       lessons: 10,
     },
     {
-      name: "Owen Villaver",
+      name: "Arnel Polo",
       title: "Innovation & Technology",
-      image:
-        "https://images.unsplash.com/photo-1506863530036-1efeddceb993?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
+      image: arnelPoloImage,
       lessons: 14,
     },
   ];
@@ -54,9 +56,11 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-12">
-            <h1 className="text-2xl tracking-tight">
-              TOPSECRET ACADEMY
-            </h1>
+            <img
+              src={logoImage}
+              alt="TOPSECRET ACADEMY"
+              className="h-12 w-auto shrink-0 object-contain sm:h-14 md:h-16"
+            />
             <div className="hidden md:flex gap-8">
               <a
                 href="#mentors"
@@ -99,7 +103,7 @@ export default function App() {
         />
 
         <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-6xl md:text-7xl mb-6 tracking-tight">
+          <h2 className="font-display text-6xl md:text-7xl mb-6 leading-[0.9] tracking-tight">
             Learn From
             <br />
             The World's Best
@@ -122,6 +126,69 @@ export default function App() {
         </div>
       </section>
 
+      {/* Spotlight Banner */}
+      <section className="bg-black px-6 py-24">
+        <div className="max-w-7xl mx-auto text-center mb-12">
+          <h3 className="font-display text-3xl md:text-4xl text-white">
+            Meet the world's best.
+            <br />
+            New classes added every month.
+          </h3>
+        </div>
+
+        <div className="max-w-6xl mx-auto">
+          <div className="relative overflow-hidden rounded-[28px] bg-black/80 shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/30 to-transparent z-10" />
+            <ImageWithFallback
+              src={marvinHerreraBannerImage}
+              alt="Marvin Herrera promotional banner"
+              className="h-[560px] w-full object-cover object-[50%_8%]"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Strip */}
+      <section className="bg-black px-6 pb-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid gap-10 md:grid-cols-3 pt-8">
+            <div className="flex gap-3">
+              <span className="text-amber-400 mt-1 text-lg leading-none">✓</span>
+              <div>
+                <h4 className="text-xl font-semibold mb-2">
+                  Lessons fit into your day
+                </h4>
+                <p className="text-white/60 leading-relaxed">
+                  Learn at your pace, in any order with new classes added every month.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-amber-400 mt-1 text-lg leading-none">✓</span>
+              <div>
+                <h4 className="text-xl font-semibold mb-2">
+                  Discover new passions
+                </h4>
+                <p className="text-white/60 leading-relaxed">
+                  Get unlimited access to 200+ instructors to help maximize your personal potential.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-amber-400 mt-1 text-lg leading-none">✓</span>
+              <div>
+                <h4 className="text-xl font-semibold mb-2">
+                  Anytime, Anywhere
+                </h4>
+                <p className="text-white/60 leading-relaxed">
+                  Watch or listen to lessons on your computer, TV, phone, or tablet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Mentors */}
       <section
         id="mentors"
@@ -129,7 +196,7 @@ export default function App() {
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl md:text-5xl mb-4">
+            <h3 className="font-display text-4xl md:text-5xl mb-4">
               Featured Mentors
             </h3>
             <p className="text-xl text-white/60">
@@ -144,7 +211,17 @@ export default function App() {
                   <ImageWithFallback
                     src={mentor.image}
                     alt={mentor.name}
-                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${mentor.name === "Ryan Herrera" ? "object-[50%_30%]" : ""}`}
+                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                      mentor.name === "Mark Herrera"
+                        ? "object-[50%_18%]"
+                        : mentor.name === "Ryan Herrera"
+                          ? "object-[50%_30%]"
+                        : mentor.name === "Marvin Herrera"
+                          ? "object-[50%_18%]"
+                          : mentor.name === "Arnel Polo"
+                            ? "object-[50%_8%]"
+                            : ""
+                    }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
